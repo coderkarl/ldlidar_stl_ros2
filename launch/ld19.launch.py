@@ -30,9 +30,9 @@ def generate_launch_description():
       output='screen',
       parameters=[
         {'product_name': 'LDLiDAR_LD19'},
-        {'topic_name': 'scan'},
+        {'topic_name': 'scan2'},
         {'frame_id': 'front_laser'},
-        {'port_name': '/dev/ttyUSB0'},
+        {'port_name': '/dev/ldlidar'},
         {'port_baudrate': 230400},
         {'laser_scan_dir': True},
         {'enable_angle_crop_func': False},
@@ -46,7 +46,16 @@ def generate_launch_description():
     package='tf2_ros',
     executable='static_transform_publisher',
     name='base_link_to_front_laser_ld19',
-    arguments=['0.18','0','0.0','0','0','0','base_link','front_laser']
+    arguments=[
+        '--x', '0.18', 
+        '--y', '0.0',
+        '--z', '0.0',
+        '--yaw', '-1.5708',
+        '--pitch','0.0',
+        '--roll', '0.0',
+        '--frame-id', 'base_link', 
+        '--child-frame-id', 'front_laser'
+    ],
   )
 
 
