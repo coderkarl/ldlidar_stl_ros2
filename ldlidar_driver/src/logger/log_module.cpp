@@ -177,7 +177,7 @@ void LogModule::RealseLock() {
 #ifndef LINUX
 	DeleteCriticalSection(&mutex_lock_);
 #else
-	pthread_mutex_unlock(&mutex_lock_);
+	pthread_mutex_destroy(&mutex_lock_);
 #endif
 }
 
