@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
   std::string product_name;
 	std::string topic_name;
 	std::string port_name;
-  int serial_port_baudrate;
+  int serial_port_baudrate = 230400;
   ldlidar::LDType type_name;
   LaserScanSetting setting;
 	setting.frame_id = "base_laser";
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
     exit(EXIT_FAILURE);
   }
 
-  if (ldlidarnode->WaitLidarCommConnect(3000)) {
+  if (ldlidarnode->WaitLidarCommConnect(5000)) {
     RCLCPP_INFO(node->get_logger(), "ldlidar communication is normal.");
   } else {
     RCLCPP_ERROR(node->get_logger(), "ldlidar communication is abnormal.");
